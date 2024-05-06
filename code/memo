@@ -1,0 +1,42 @@
+// 少数第１５位まで出力
+cout << fixed << setprecision(15) << ans << endl;
+
+// vector<int> 変数名（要素数,値）；
+vector<int> a(101, 0);
+
+//順列
+do{}while(next_permutation(繰り返すもの));
+
+//abc207b
+区間iと区間jが共通部分を持つものの個数
+for (int i = 0; i < n; i++){
+    for (int j = i+1; j < n; j++){
+        if(max(左端の大きい方) <= min(右端の小さい方)) ans++;
+    }
+}
+
+//set(pair(int, int))の使い方
+/*(x,y)のある場所と格納したPの末尾の場所が同じなら
+（set関数なので同じ文字は格納できない）*/
+if(p.find(make_pair(x,y)) == p.end())
+
+//set関数
+データの追加.insert
+データの削除.erase
+データの検索.find
+
+//(10^9 + 7)の書き方 整数で使うなら(int)型に直す
+(double)1e9 + 7
+
+// a_{i} >= xを満たす最小のi -> 配列aの中にxより小さい要素がいくつあるか
+// 注意　a_{i} = xのとき、その値も小さい要素の一つになる
+int pos = lower_bound(a+1, a+n+1, x) - a;
+
+//p = {1, 2, 3, 4, 5} 1から連続した数字を格納
+iota(p, p + 5, 1);
+
+//最小値,最大値のイテレータを返す関数
+// std::*_element は，イテレーターを返すので '*' で値を取得する
+int min = *std::min_element(vec.begin(), vec.end());
+int max = *std::max_element(vec.begin(), vec.end());
+
