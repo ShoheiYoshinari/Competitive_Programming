@@ -1,85 +1,50 @@
 #include <bits/stdc++.h>
 using namespace std;
-using ll = long long;
+using Graph = vector<vector<int>>;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 #define rep2(i, s, n) for (int i = (s); i <= (int)(n); i++)
+#define fore(i, a) for(auto &i : a)
 #define all(a) (a).begin(), (a).end()
-using Graph = vector<vector<int>>;
-const int dx[]={1,1,1,0,0,-1,-1,-1};
-const int dy[]={1,0,-1,1,-1,1,0,-1};
-const int di[] = {1, 0, -1, 0};
-const int dj[] = {0, 1, 0, -1};
-const double PI = acos(-1);
 
-const int di6_odd[] = {1, 0, -1, 0, 1, -1};
-const int dj6_odd[] = {0, 1, 0, -1, 1, 1};
-const int di6_even[] = {1, 0, -1, 0, 1, -1};
-const int dj6_even[] = {0, 1, 0, -1, -1, -1};
+int dx[2][6] = {
+    {1, 0, -1, 0, 1, -1},
+    {1, 0, -1, 0, 1, -1}
+};
+int dy[2][6] = {
+    {0, 1, 0, -1, -1, -1},
+    {0, 1, 0, -1, 1, 1}
+};
 
 int main(){
-    int h, w;
-    cin >> h >> w;
-    
-    vector<vector<char>> s(w+2, vector<char>(h+2, 0));
-    rep2(i, 1, w){
-        rep2(j, 1, h) cin >> s[i+1][j+1];
+    int w, h;
+    cin >> w >> h;
+    vector<vector<int> > fi(h+2, vector<int>(w+2, 0));
+    rep2(i, 1, h){
+        rep2(j, 1, w) cin >> fi[i][j]; 
     }
+    vector<vector<bool> > seen(h+2, vector<bool>(w+2, false));
 
-    vector<vector<bool>> visited(w+2, vector<bool>(h+2, false));
-    queue<pair<int, int> > q;
+    auto bfs = [&](auto self, int x, int y) -> void {
+        seen[x][y] = true;
+        rep(dir, 6){
+            int nx = x + dx[x%2][dir], ny = y + dy[x%2][dir];
+            if(nx < 0 || nx >= h+2 || ny < 0 || ny >= w+2) continue;
+            if(fi[x][y] == 1) continue;
+            if(!seen[nx][ny]) self(self, nx, ny);
+        }
+    };
 
+    bfs(bfs, 0, 0);
+    rep2(x, 1, h) rep2(y, 1, w) if(!seen[x][y]) fi[x][y] = 1;
     int cnt = 0;
-    rep2(i, 1, w){
-        rep2(j, 1, h){
-            //端の部分のみ探索
-            if(i == 1 || i == w || j == 1 || j == h){
-                //建物である時
-                if(s[i][j] == '1'){
-                    if(j%2 == 1){
-                        rep(v, 6){
-                            int ni = i + di6_odd[v];
-                            int nj = j + dj6_odd[v];
-                            if(ni <= 0 || ni > w || nj <= 0 || nj > h) cnt++;
-                        }
-                    }else{
-                        rep(v, 6){
-                            int ni = i + di6_even[v];
-                            int nj = j + dj6_even[v];
-                            if(ni <= 0 || ni > w || nj <= 0 || nj > h) cnt++;
-                        }
-                    }
-                //空間である時
-                }else if(s[i][j] == '0'){
-                    if(visited[i][j] == true) continue;
-                    visited[i][j] = true;
-                    q.emplace(i, j);
-                    while(!q.empty()){
-                        auto [ii, jj] = q.front(); q.pop();
-                        visited[ii][jj] = true;
-                        if(j%2 == 1){
-                            rep(v, 6){
-                                int ni = ii + di6_odd[v];
-                                int nj = jj + dj6_odd[v];
-                                if(ni <= 0 || ni > w || nj <= 0 || nj > h) continue;
-                                if(visited[ni][nj] == true) continue;
-                                if(s[ni][nj] == '0') q.emplace(ni, nj);
-                                if(s[ni][nj] == '1') cnt++;
-                            }
-                        }else{
-                            rep(v, 6){
-                                int ni = ii + di6_even[v];
-                                int nj = jj + dj6_even[v];
-                                if(ni <= 0 || ni > w || nj <= 0 || nj > h) continue;
-                                if(visited[ni][nj] == true) continue;
-                                if(s[ni][nj] == '0') q.emplace(ni, nj);
-                                if(s[ni][nj] == '1') cnt++;
-                            }
-                        }
-                    }
-                }
+    rep2(x, 1, h){
+        rep2(y, 1, w){
+            if(fi[x][y] == 0) continue;
+            //建物の周囲6方向を探索、空間なら＋１
+            rep(dir, 6){
+                int nx = x + dx[x%2][dir], ny = y + dy[x%2][dir];
+                if(fi[nx][ny] == 0) cnt++;
             }
-            cout << i << ' ' << j << endl;
-            cout << cnt << endl;
         }
     }
     cout << cnt << endl;
