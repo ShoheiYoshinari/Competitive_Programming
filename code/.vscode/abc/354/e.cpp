@@ -11,46 +11,24 @@ const int di[] = {1, 0, -1, 0};
 const int dj[] = {0, 1, 0, -1};
 const double PI = acos(-1);
 
-int n;
-int a, b;
-
 int main(){
+    int n;
     cin >> n;
-    vector<pair<int, int> > v;
-    map<int, int> cnta, cntb;
-    rep(i, n){
-        cin >> a >> b;
-        v.push_back(make_pair(a, b));
-        cnta[a]++;
-        cntb[b]++;
-    }
-
-    int osu = 0;
-    int ou = 0;
-    int uo = 0;
-
-    rep(i, n){
-        rep2(j, i+1, n){
-            if(v[i].first == v[j].first || v[i].second == v[j].second){
-                cout << v[i].first << " " << v[j].first << endl;
-                if(v[i].first == v[j].first && v[i].second == v[j].second){
-                    osu++;
-                    continue;
-                }
-
-                if(cnta[v[i].first] >= 2){
-                    if(cntb[v[i].second]%2 == 0) ou++;
-                }
-                if(cntb[v[i].second] >= 2){
-                    if(cnta[v[i].first]%2 == 0) uo++;
-                }
+    vector<int> a(n), b(n);
+    rep(i, n) cin >> a[i] >> b[i];
+    int n2 = 1<<n;
+    vector<bool> dp(n2);
+    rep(s, n2){
+        // 今勝てるかどうか 負け:now = false
+        bool now = false;
+        rep(i, n) rep(j, i) if((s>>i)&1) if((s>>j)&1){
+            if(a[i] == a[j] || b[i] == b[j]){
+                if(!dp[s^1<<i^1<<j]) now = true;
             }
         }
+        dp[s] = now;
     }
-    cout << osu << uo << ou << endl;
-
-    if((n-osu*2-uo/2-ou/2)%2) cout << "Aoki" << endl;
-    else cout << "Takahashi" << endl;
+    if(dp[n2-1]) cout << "Takahashi" << endl;
+    else cout << "Aoki" << endl;
     return 0;
-    
 }
