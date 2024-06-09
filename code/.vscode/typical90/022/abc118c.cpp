@@ -22,17 +22,14 @@ int gcd(int a, int b) {
     return b ? gcd(b, a%b) : a;
 }
 
-int main(){
-    int k;
-    cin >> k;
+int main() {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    rep(i, n) cin >> a[i];
 
-    ll ans = 0;
-    rep2(x, 1, k){
-        rep2(y, 1, k){
-            rep2(z, 1, k){
-                ans += gcd(x, gcd(y, z));
-            }
-        }
-    }
+    int ans = a[0];
+    rep(i, n) ans = gcd(ans, a[i]);
     cout << ans << endl;
+    return 0;
 }

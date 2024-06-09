@@ -23,16 +23,19 @@ int gcd(int a, int b) {
 }
 
 int main(){
-    int k;
-    cin >> k;
+    int n; cin >> n;
+    vector<int> a(n);
+    rep(i, n) cin >> a[i];
 
-    ll ans = 0;
-    rep2(x, 1, k){
-        rep2(y, 1, k){
-            rep2(z, 1, k){
-                ans += gcd(x, gcd(y, z));
-            }
-        }
+    vector<int> l(n+1, 0), r(n+1, 0);
+    for(int i = 0; i < n; i++) l[i+1] = gcd(l[i], a[i]);
+    for(int i = n-1; i >= 0; i--) r[i] = gcd(r[i+1], a[i]);
+
+    int res = 0;
+    rep(i, n){
+        int left = l[i];
+        int right = r[i+1];
+        chmax(res, gcd(left, right));
     }
-    cout << ans << endl;
+    cout << res << endl;
 }
