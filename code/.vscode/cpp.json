@@ -199,6 +199,37 @@
 		"description": [
 			"aのb乗をmで割った余りを返す関数"
 		]
+	},
+
+	"Basen to long":{
+		"prefix": "basen number",
+		"body": [
+			"long long basen_to_long (string n, long long p){",
+			"    long long ans = 0, x = 1, m = n.size()",
+			"    for(int i = m-1; i >= 0; i--)",
+			"        ans = 1LL * (n[i]-'0') * x",
+			"        x *= (ll)(p);",
+			"    }",
+			"    return ans;",
+			"}"
+		],
+		"description": "n進数を10進数に変換する関数"
+	},
+
+	"Long to Basen":{
+		"prefix": "longtobasen",
+		"body": [
+			"string long_to_base9(long long n, long long p){",
+			"    string ans;",
+			"    while(n>0){",
+			"        char c = {(n%p)+'0'};",
+			"        ans = c + ans;",
+			"        n /= p;",
+			"    }",
+			"    return ans;",
+			"}"
+		],
+		"description": "10進数をn進数に変換する関数"
 	}
 
 }

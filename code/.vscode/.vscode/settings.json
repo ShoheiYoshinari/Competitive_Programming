@@ -1,11 +1,10 @@
-{
-    "files.associations": {
-        "iostream": "cpp",
-        "algorithm": "cpp",
-        "random": "cpp",
-        "utility": "cpp",
-        "ostream": "cpp",
-        "vector": "cpp"
-    },
-    "C_Cpp.errorSquiggles": "disabled"
-}
+//{
+//    "files.associations": {
+//        "algorithm": "cpp",
+ //       "random": "cpp",
+ //       "utility": "cpp",
+ //       "ostream": "cpp",
+ //       "vector": "cpp"
+ //   },
+ //   "C_Cpp.errorSquiggles": "disabled"
+//}
