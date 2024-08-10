@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 // C++ includes used for precompiling -*- C++ -*-
 // Copyright (C) 2003-2013 Free Software Foundation, Inc.
 //
@@ -46,7 +44,7 @@
 #include <ccomplex>
 #include <cfenv>
 #include <cinttypes>
-#include <cstdalign>
+//#include <cstdalign>
 #include <cstdbool>
 #include <cstdint>
 #include <ctgmath>
@@ -119,7 +117,6 @@ const int dy[]={1,0,-1,1,-1,1,0,-1};
 const double PI = acos(-1);
 
 int main(){
-    cout << "Hello world" << endl;
+    cout << max({1, 2, 3, 4, 5}) << endl;
     return 0;
 }
->>>>>>> 77d76b2 (rebase commit)

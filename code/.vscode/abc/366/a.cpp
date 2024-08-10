@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 // C++ includes used for precompiling -*- C++ -*-
 // Copyright (C) 2003-2013 Free Software Foundation, Inc.
 //
@@ -46,7 +44,7 @@
 #include <ccomplex>
 #include <cfenv>
 #include <cinttypes>
-#include <cstdalign>
+//#include <cstdalign>
 #include <cstdbool>
 #include <cstdint>
 #include <ctgmath>
@@ -112,14 +110,12 @@ using namespace std;
 using ll = long long;
 
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
-#define rep2(i, s, n) for (int i = (s); i <= (int)(n); i++)
+#define rep2(i, s, n) for (int i = (s); i < (int)(n); i++)
 #define all(a) (a).begin(), (a).end()
 const int dx[]={1,1,1,0,0,-1,-1,-1};
 const int dy[]={1,0,-1,1,-1,1,0,-1};
 const double PI = acos(-1);
 
 int main(){
-    cout << "Hello world" << endl;
-    return 0;
+    
 }
->>>>>>> 77d76b2 (rebase commit)
