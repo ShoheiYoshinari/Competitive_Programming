@@ -9,8 +9,8 @@ template<class T> bool chmax(T& a,T b) { if(a < b){a = b; return true;} return f
 const int dx[]={1,1,1,0,0,-1,-1,-1};
 const int dy[]={1,0,-1,1,-1,1,0,-1};
 const double PI = acos(-1);
-const int di[] = {-1, 0, 1, 0};
-const int dj[] = {0, 1, 0, -1};
+const int dy[] = {1, 0, -1, 0};
+const int dx[] = {0, 1, 0, -1};
 
 //modint copy
 template <std::uint_fast64_t Modulus> class modint {

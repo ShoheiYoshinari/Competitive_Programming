@@ -70,6 +70,9 @@
     "initializer_list": "cpp",
     "tuple": "cpp",
     "complex": "cpp",
-    "iomanip": "cpp"
+    "iomanip": "cpp",
+    "numbers": "cpp",
+    "functional": "cpp",
+    "typeinfo": "cpp"
   }
 }
