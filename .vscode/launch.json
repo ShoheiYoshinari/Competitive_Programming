@@ -6,8 +6,13 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
+<<<<<<< HEAD
       "cwd": "/Users/yoshinarishouhei/Competitive_Programming/code/.vscode/practice",
       "program": "/Users/yoshinarishouhei/Competitive_Programming/code/.vscode/practice/build/Debug/outDebug"
+=======
+      "cwd": "/Users/yoshinarishouhei/Desktop/Competitive_Programming-main/code/.vscode/practice",
+      "program": "/Users/yoshinarishouhei/Desktop/Competitive_Programming-main/code/.vscode/practice/build/Debug/outDebug"
+>>>>>>> 0b17d89 (first commit from mac)
     }
   ]
 }
