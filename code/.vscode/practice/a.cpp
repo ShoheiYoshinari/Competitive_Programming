@@ -1,18 +1,89 @@
-#include <bits/stdc++.h>
+#ifndef _GLIBCXX_NO_ASSERT
+#include <cassert>
+#endif
+#include <cctype>
+#include <cerrno>
+#include <cfloat>
+#include <ciso646>
+#include <climits>
+#include <clocale>
+#include <cmath>
+#include <csetjmp>
+#include <csignal>
+#include <cstdarg>
+#include <cstddef>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+#if __cplusplus >= 201103L
+#include <ccomplex>
+#include <cfenv>
+#include <cinttypes>
+#include <cstdbool>
+#include <cstdint>
+#include <ctgmath>
+#include <cwchar>
+#include <cwctype>
+#endif
+// C++
+#include <algorithm>
+#include <bitset>
+#include <complex>
+#include <deque>
+#include <exception>
+#include <fstream>
+#include <functional>
+#include <iomanip>
+#include <ios>
+#include <iosfwd>
+#include <iostream>
+#include <istream>
+#include <iterator>
+#include <limits>
+#include <list>
+#include <locale>
+#include <map>
+#include <memory>
+#include <new>
+#include <numeric>
+#include <ostream>
+#include <queue>
+#include <set>
+#include <sstream>
+#include <stack>
+#include <stdexcept>
+#include <streambuf>
+#include <string>
+#include <typeinfo>
+#include <utility>
+#include <valarray>
+#include <vector>
+#if __cplusplus >= 201103L
+#include <array>
+#include <atomic>
+#include <chrono>
+#include <condition_variable>
+#include <forward_list>
+#include <future>
+#include <initializer_list>
+#include <mutex>
+#include <random>
+#include <ratio>
+#include <regex>
+#include <scoped_allocator>
+#include <system_error>
+#include <thread>
+#include <tuple>
+#include <typeindex>
+#include <type_traits>
+#include <unordered_map>
+#include <unordered_set>
+#endif
+
 using namespace std;
 using ll = long long;
 using ull = unsigned long long;
-const double pi = acos(-1);
-#define OVERLOAD_REP(_1, _2, _3, name, ...) name
-#define REP1(i, n) for (auto i = std::decay_t<decltype(n)>{}; (i) != (n); ++(i))
-#define REP2(i, l, r) for (auto i = (l); (i) != (r); ++(i))
-#define rep(...) OVERLOAD_REP(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)
-#define all(p) (p).begin(), (p).end()
-#define exists(c, e) ((c).find(e) != (c).end())
-template<class T> bool chmin(T& a,T b) { if(a > b){a = b; return true;} return false; }
-template<class T> bool chmax(T& a,T b) { if(a < b){a = b; return true;} return false; }
-const int dy[] = {1, 0, -1, 0};
-const int dx[] = {0, 1, 0, -1};
 
 struct INIT{
  INIT(){
@@ -21,55 +92,43 @@ struct INIT{
   cout << fixed << setprecision(20);
  }
 }INIT;
-
-ll n, x;
-bool taskAchieve(ll W_target, vector<ll>& a, vector<ll>& p, vector<ll>& b, vector<ll>& q) {
-    ll total_cost = 0;
-
-    rep(i, n) {
-        ll min_cost_s = LLONG_MAX, min_cost_t = LLONG_MAX;
-        for (ll s = 0; s <= a[i]; s++) {
-            ll t;
-            ll remaining_capacity = max(0LL, W_target - s * a[i]);
-            if(remaining_capacity == 0) t = 0;
-            else t = (remaining_capacity + b[i] - 1) / b[i];
-            ll total = s * p[i] + t * q[i];
-            min_cost_s = min(min_cost_s, total);
-        }
-
-        for(ll t = 0; t <= b[i]; t++){
-            ll s;
-            ll remaining_capacity = max(0LL, W_target - t * b[i]);
-            if(remaining_capacity == 0) s = 0;
-            else s = (remaining_capacity + a[i] - 1) / a[i];
-            ll total = s * p[i] + t * q[i];
-            min_cost_t = min(min_cost_t, total);
-        }
-        total_cost += min(min_cost_s, min_cost_t);
-    }
-
-    return total_cost <= x;
-}
-
 int main() {
-    cin >> n >> x;
-    vector<ll> a(n), b(n), p(n), q(n);
-    for (ll i = 0; i < n; ++i) {
-        cin >> a[i] >> p[i] >> b[i] >> q[i];
+    int n;
+    cin >> n;
+    vector<vector<char> > a(n+1, vector<char> (n+1));
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= n; j++) cin >> a[i][j];
     }
 
-    ll ans = 0;
-    ll ok = -1, ng = 1e9 + 1;
-    while (ng - ok > 1) {
-        ll mid = (ok + ng) / 2;
-        if (taskAchieve(mid, a, p, b, q)) {
-            ans = mid;
-            ok = mid;
-        } else {
-            ng = mid;
+    for(int i = 1; i <= n/2; i++){
+        vector<vector<char> > b(n+1, vector<char> (n+1, '$'));
+        for(int x = i; x <= n+1-i; x++){
+            for(int y = i; y <= n+1-i; y++){
+                b[y][n+1-x] = a[x][y];
+            }
         }
+
+        for(int x = 1; x <= n; x++){
+            for(int y = 1; y <= n; y++){
+                if(b[x][y] != '$') a[x][y] = b[x][y]; 
+            }
+        }
+
+        for(int x = 1; x <= n; x++){
+            for(int y = 1; y <= n; y++){
+                cout << b[x][y];
+            }
+            cout << endl;
+        }
+        cout << endl;
+
     }
 
-    cout << ans << endl; 
+    for(int x = 1; x <= n; x++){
+        for(int y = 1; y <= n; y++){
+            cout << a[x][y];
+        }
+        cout << endl;
+    }
     return 0;
 }
