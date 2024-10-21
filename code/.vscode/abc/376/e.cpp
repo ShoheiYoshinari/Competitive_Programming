@@ -21,5 +21,33 @@ struct INIT{
   cout << fixed << setprecision(20);
  }
 }INIT;
-int main() {
+
+void solve(ll n, ll k, vector<ll>& a, vector<ll>& b){
+    vector<pair<long long, int>> AB;
+    rep(i, n) AB.push_back({(ll)a[i]*b[i], i});
+    sort(AB.begin(), AB.end());
+
+    ll sum_B = 0;
+    ll max_A = 0;
+    rep(i, k){
+        int idx = AB[i].second;
+        max_A = max(max_A, a[idx]);
+        sum_B += b[idx];
+    }
+    cout << max_A * sum_B << endl;
+}
+
+int main(){
+    ll t;
+    cin >> t;
+    while(t--){
+        ll n, k;
+        cin >> n >> k;
+        vector<ll> a(n), b(n);
+        rep(i, n) cin >> a[i];
+        rep(i, n) cin >> b[i];
+
+        solve(n, k, a, b);
+    }
+    return 0;
 }
