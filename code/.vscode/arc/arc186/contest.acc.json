@@ -1,0 +1,44 @@
+{
+  "contest": {
+    "id": "arc186",
+    "title": "AtCoder Regular Contest 186",
+    "url": "https://atcoder.jp/contests/arc186"
+  },
+  "tasks": [
+    {
+      "id": "arc186_a",
+      "label": "A",
+      "title": "Underclued",
+      "url": "https://atcoder.jp/contests/arc186/tasks/arc186_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "arc186_b",
+      "label": "B",
+      "title": "Typical Permutation Descriptor",
+      "url": "https://atcoder.jp/contests/arc186/tasks/arc186_b"
+    },
+    {
+      "id": "arc186_c",
+      "label": "C",
+      "title": "Ball and Box",
+      "url": "https://atcoder.jp/contests/arc186/tasks/arc186_c"
+    },
+    {
+      "id": "arc186_d",
+      "label": "D",
+      "title": "Polish Mania",
+      "url": "https://atcoder.jp/contests/arc186/tasks/arc186_d"
+    },
+    {
+      "id": "arc186_e",
+      "label": "E",
+      "title": "Missing Subsequence",
+      "url": "https://atcoder.jp/contests/arc186/tasks/arc186_e"
+    }
+  ]
+}

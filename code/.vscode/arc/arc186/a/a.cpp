@@ -21,7 +21,7 @@ struct INIT{
   cout << fixed << setprecision(20);
  }
 }INIT;
-int main() {
-    cout << max({1, 2, 3}) << endl;
-    return 0;
+
+int main(){
+    
 }
