@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/yoshinarishouhei/Competitive_Programming/code/.vscode/practice",
+      "program": "/Users/yoshinarishouhei/Competitive_Programming/code/.vscode/practice/build/Debug/outDebug"
+    }
+  ]
+}
