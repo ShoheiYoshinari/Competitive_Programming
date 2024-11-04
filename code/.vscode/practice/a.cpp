@@ -22,6 +22,5 @@ struct INIT{
  }
 }INIT;
 int main() {
-    cout << max({1, 2, 3}) << endl;
-    return 0;
+    cout << "mac fixed" << endl;
 }
