@@ -23,20 +23,20 @@ struct INIT{
 }INIT;
 
 int main(){
-    int n; cin >> n;
-    vector<ll> a(n);
-    rep(i, n) cin >> a[i];
+    string s;
+    cin >> s;
 
-    map<int, int> mp;
-    rep(i, 
-        if(mp[a[i]] == 0){
-            cout << -1;
-        }else{
-            cout << mp[a[i]];
-        }
-        mp[a[i]] = i+1;
-        if(i != n-1) cout << ' '
+    int n = s.size();
+    map<char, int> mp;
+    bool ok = true;
+    if(n%2 == 1) ok = false;
+    for(int i = 0; i < n; i+=2){
+        if(s[i] != s[i+1]) ok = false;
+        mp[s[i]] += 2;
     }
-    cout << endl;
+    for(auto p : mp){
+        if(p.second != 2) ok = false;
+    }
+    cout << (ok ? "Yes" : "No") << endl;
     return 0;
 }

@@ -22,21 +22,29 @@ struct INIT{
  }
 }INIT;
 
-int main(){
-    int n; cin >> n;
-    vector<ll> a(n);
-    rep(i, n) cin >> a[i];
+int n, m;
+vector<vector<int>> ans;
 
-    map<int, int> mp;
-    rep(i, 
-        if(mp[a[i]] == 0){
-            cout << -1;
-        }else{
-            cout << mp[a[i]];
-        }
-        mp[a[i]] = i+1;
-        if(i != n-1) cout << ' '
-    }
-    cout << endl;
-    return 0;
+void dfs(vector<int> v){
+	int sz = v.size();
+	if(sz == n){
+		ans.push_back(v);
+		return ;
+	}
+	for(int i = (sz == 0 ? 1 : v.back()+10); i <= m - 10*(n-sz-1); i++){
+		vector<int> nx = v;
+		nx.push_back(i);
+		dfs(nx);
+	}
+}
+
+
+int main(){
+	cin >> n >> m;
+	dfs({});
+	cout << ans.size() << endl;
+	rep(i, ans.size()){
+		rep(j, n) cout << ans[i][j] << ' ';
+		cout << endl;
+	}
 }

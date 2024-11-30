@@ -23,19 +23,44 @@ struct INIT{
 }INIT;
 
 int main(){
-    int n; cin >> n;
-    vector<ll> a(n);
-    rep(i, n) cin >> a[i];
+    int n, k;
+    cin >> n >> k;
+    k--;
+    string s;
+    cin >> s;
 
-    map<int, int> mp;
-    rep(i, 
-        if(mp[a[i]] == 0){
-            cout << -1;
+    vector<pair<string, int>> zero, one;
+    int cnt = 0;
+    string tmp = "";
+    tmp += s[0];
+    rep(i, (int)s.size()-1){
+        if(s[i] != s[i+1]) {
+            if(tmp[0] == '0') zero.push_back({tmp, cnt});
+            else one.push_back({tmp, cnt});
+            cnt++;
+            tmp = s[i+1];
         }else{
-            cout << mp[a[i]];
+            tmp += s[i+1];
         }
-        mp[a[i]] = i+1;
-        if(i != n-1) cout << ' '
+    }
+    if(tmp[0] == '0') zero.push_back({tmp, cnt});
+    else one.push_back({tmp, cnt});
+    cnt++;
+
+    one[k-1].first += one[k].first;
+    one[k].first = "";
+
+    int cnt2 = 0;
+    int zero_cnt = 0, one_cnt = 0;
+    rep(i, cnt){
+        if(cnt2 == zero[zero_cnt].second){
+            cout << zero[zero_cnt].first;
+            zero_cnt++;
+        }else{
+            cout << one[one_cnt].first;
+            one_cnt++;
+        }
+        cnt2++;
     }
     cout << endl;
     return 0;

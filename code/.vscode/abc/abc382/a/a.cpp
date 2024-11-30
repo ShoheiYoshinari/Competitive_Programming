@@ -23,20 +23,19 @@ struct INIT{
 }INIT;
 
 int main(){
-    int n; cin >> n;
-    vector<ll> a(n);
-    rep(i, n) cin >> a[i];
+    int n, d;
+    cin >> n >> d;
+    string s;
+    cin >> s;
 
-    map<int, int> mp;
-    rep(i, 
-        if(mp[a[i]] == 0){
-            cout << -1;
-        }else{
-            cout << mp[a[i]];
+    int cnt = 0;
+    for(int i = s.size()-1; i >= 0; i--){
+        if(s[i] == '@'){
+            s[i] = '.';
+            cnt++;
         }
-        mp[a[i]] = i+1;
-        if(i != n-1) cout << ' '
+        if(cnt >= d) break;
     }
-    cout << endl;
+    cout << s << endl;
     return 0;
 }

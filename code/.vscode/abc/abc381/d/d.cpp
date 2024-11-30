@@ -23,20 +23,10 @@ struct INIT{
 }INIT;
 
 int main(){
-    int n; cin >> n;
-    vector<ll> a(n);
+    int n;
+    cin >> n;
+    vector<int> a(n);
     rep(i, n) cin >> a[i];
 
-    map<int, int> mp;
-    rep(i, 
-        if(mp[a[i]] == 0){
-            cout << -1;
-        }else{
-            cout << mp[a[i]];
-        }
-        mp[a[i]] = i+1;
-        if(i != n-1) cout << ' '
-    }
-    cout << endl;
-    return 0;
+    
 }

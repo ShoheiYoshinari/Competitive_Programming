@@ -23,20 +23,35 @@ struct INIT{
 }INIT;
 
 int main(){
-    int n; cin >> n;
-    vector<ll> a(n);
+    int n, m;
+    cin >> n >> m;
+    vector<int> a(n), b(m);
     rep(i, n) cin >> a[i];
+    rep(i, m) cin >> b[i];
 
-    map<int, int> mp;
-    rep(i, 
-        if(mp[a[i]] == 0){
-            cout << -1;
-        }else{
-            cout << mp[a[i]];
-        }
-        mp[a[i]] = i+1;
-        if(i != n-1) cout << ' '
+    vector<pair<int, int>> p(n), si(m);
+    rep(i, n){
+        p[i] = {a[i], i+1};
     }
-    cout << endl;
-    return 0;
+    rep(i, m){
+        si[i] = {b[i], i};
+    }
+
+    sort(all(p));
+    sort(all(si));
+
+    set<int> avi;
+    vector<int> ans(m, -1);
+    int p_idx = 0;
+    for(auto& [d, idx] : si){
+        while(p_idx < n && p[p_idx].first <= d){
+            avi.insert(p[p_idx].second);
+            p_idx++;
+        }
+
+        if(!avi.empty()){
+            ans[idx] = *avi.begin();
+        }
+    }
+    rep(i, m) cout << ans[i] << endl;
 }

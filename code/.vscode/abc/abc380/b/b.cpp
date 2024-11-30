@@ -23,19 +23,18 @@ struct INIT{
 }INIT;
 
 int main(){
-    int n; cin >> n;
-    vector<ll> a(n);
-    rep(i, n) cin >> a[i];
-
-    map<int, int> mp;
-    rep(i, 
-        if(mp[a[i]] == 0){
-            cout << -1;
+    string s;
+    cin >> s;
+    
+    int cnt = 0;
+    rep(i, s.size()){
+        if(s[i] == '|'){
+            if(cnt == 0) continue;
+            else cout << cnt << ' ';
+            cnt = 0;
         }else{
-            cout << mp[a[i]];
+            cnt++;
         }
-        mp[a[i]] = i+1;
-        if(i != n-1) cout << ' '
     }
     cout << endl;
     return 0;

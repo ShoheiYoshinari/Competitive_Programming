@@ -23,20 +23,27 @@ struct INIT{
 }INIT;
 
 int main(){
-    int n; cin >> n;
-    vector<ll> a(n);
-    rep(i, n) cin >> a[i];
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
 
-    map<int, int> mp;
-    rep(i, 
-        if(mp[a[i]] == 0){
-            cout << -1;
-        }else{
-            cout << mp[a[i]];
+    int ans = 0;
+    int d = 1;
+    rep(i, n){
+        if(s[i] == '/'){
+            d = 1;
+            while(1){
+                int l = i-d;
+                int r = i+d;
+                if(l < 0 || n <= l) break;
+                if(r < 0 || n <= r) break;
+                if(s[l] != '1') break;
+                if(s[r] != '2') break;
+                d++;
+            }
         }
-        mp[a[i]] = i+1;
-        if(i != n-1) cout << ' '
+        chmax(ans, 1+(d-1)*2);
     }
-    cout << endl;
-    return 0;
+    cout << ans << endl;
 }

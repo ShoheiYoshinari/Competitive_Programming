@@ -23,19 +23,38 @@ struct INIT{
 }INIT;
 
 int main(){
-    int n; cin >> n;
-    vector<ll> a(n);
-    rep(i, n) cin >> a[i];
+    string s, t = "";
+    cin >> s;
+    ll q;
+    cin >> q;
+    
+    vector<ll> bi;
+    bi.push_back(1);
+    rep(i, 60) bi.push_back(bi[i]*2);
 
-    map<int, int> mp;
-    rep(i, 
-        if(mp[a[i]] == 0){
-            cout << -1;
-        }else{
-            cout << mp[a[i]];
+    rep(i, s.size()){
+        if(s[i] >= 'A' && s[i] <= 'Z') t += (s[i] + 'a' - 'A');
+        else t += (s[i] + 'A' - 'a');  }
+
+    rep(i, q){
+        ll k;
+        cin >> k; k--;
+        ll cnt = k / (ll)s.size();
+        ll m = k % (ll)s.size();
+        bool b = true;
+
+        while(cnt >= 1){
+            rep(i, 61){
+                if(cnt < bi[i]){
+                    cnt -= bi[i-1];
+                    b = !b;
+                    break;
+                }
+            }
         }
-        mp[a[i]] = i+1;
-        if(i != n-1) cout << ' '
+
+        if(b) cout << s[m] << ' ';
+        else cout << t[m] << ' ';
     }
     cout << endl;
     return 0;
