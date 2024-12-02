@@ -25,26 +25,36 @@ struct INIT{
 int n, m;
 vector<vector<int>> ans;
 
-void dfs(vector<int> v){
-	int sz = v.size();
-	if(sz == n){
-		ans.push_back(v);
-		return ;
-	}
-	for(int i = (sz == 0 ? 1 : v.back()+10); i <= m - 10*(n-sz-1); i++){
-		vector<int> nx = v;
-		nx.push_back(i);
-		dfs(nx);
-	}
+void generate(int s, vector<int>& now) {
+    if (now.size() == n) {
+        ans.push_back(now);
+        
+    }
+
+    for (int next = s + 10; next <= m; ++next) {
+        now.push_back(next);
+        generate(next, now);
+        now.pop_back();
+    }
 }
 
+int main() {
+    cin >> n >> m;
+    vector<int> now;
 
-int main(){
-	cin >> n >> m;
-	dfs({});
-	cout << ans.size() << endl;
-	rep(i, ans.size()){
-		rep(j, n) cout << ans[i][j] << ' ';
-		cout << endl;
-	}
+    for (int s = 1; s <= m; ++s) {
+        now.push_back(s);
+        generate(s, now);
+        now.pop_back();
+    }
+
+    cout << ans.size() << endl;
+    for (auto& a : ans) {
+        for (int i = 0; i < a.size(); ++i) {
+            cout << a[i] << ' ';
+        }
+        cout << endl;
+    }
+
+    return 0;
 }

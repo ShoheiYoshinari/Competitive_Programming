@@ -22,6 +22,40 @@ struct INIT{
  }
 }INIT;
 
+int n, x;
+
+
 int main(){
-    
+    cin >> n >> x;
+    vector<long double> p(n);
+    rep(i, n){
+        cin >> p[i];
+        p[i] /= 100;
+    }
+
+    vector<long double> dp(n+1, 0.0);
+    dp[0] = 1.0;
+    rep(i, n){
+        vector<long double> ndp(n+1, 0.0);
+        rep(j, n){
+            ndp[j] += (1-p[i])*dp[j];
+            ndp[j+1] += p[i]*dp[j];
+        }
+        swap(dp, ndp);
+    }
+
+    //rep(i, n) cout << dp[i] << ' ';
+    //cout << endl;
+
+    vector<long double> f(x+1, 0.0);
+    for(int i = 1; i <= x; i++){
+        f[i] += 1.0;
+        for(int j = 1; j <= n; j++){
+            f[i] += f[max(i-j, 0)]*dp[j];
+        }
+        f[i] /= (1 - dp[0]);
+    }
+
+    cout << f[x] << endl;
+    return 0;
 }
