@@ -1,0 +1,20 @@
+{
+  "contest": {
+    "id": "ahc040",
+    "title": "HACK TO THE FUTURE 2025 (AtCoder Heuristic Contest 040)",
+    "url": "https://atcoder.jp/contests/ahc040"
+  },
+  "tasks": [
+    {
+      "id": "ahc040_a",
+      "label": "A",
+      "title": "Packing Uncertain Rectangles",
+      "url": "https://atcoder.jp/contests/ahc040/tasks/ahc040_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    }
+  ]
+}
