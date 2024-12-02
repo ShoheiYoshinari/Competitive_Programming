@@ -49,28 +49,45 @@ int main() {
     rep(t, T) {
         vector<tuple<int, int, char, int>> prdb;
 
-        int x = 0, y = 0, max_row_h = 0;
-        int row = 0;
+        int x = 0, y = 0;
+        int max_row_h = 0;
+        int max_col_w = 0;
+        int max_col_w_id = 0;
+        int id = 0;
+        char c = 'L';
+        int wari = (int)(sqrt(N));
 
         rep(i, N) {
             int cur_width = wh[i].width;
             int cur_height = wh[i].height;
             int r = 0;
 
+            //縦幅を高く
             bool can_rotate = (x + wh[i].height < H);
             if (cur_width > cur_height && can_rotate) {
                 swap(cur_width, cur_height);
                 r = 1;
             }
-
-            if (x + cur_width >= 1e6) {
+            //
+            if (x + cur_width >= W) {
                 x = 0;
                 y += max_row_h;
                 max_row_h = cur_height;
-                ++row;
+                if(max_col_w < cur_width){
+                    max_col_w = cur_width;
+                    max_col_w_id = i;
+                }
             }
 
-            prdb.emplace_back(wh[i].idx, r, 'U', (row%4 == 0 ? -1 : row%4));
+            if(i%wari == 0){
+                id = i;
+                if(c == 'L') c = 'U';
+            }else{
+                id++;
+                c = 'L';
+            }
+
+            prdb.emplace_back(wh[i].idx, r, c, id);
 
             x += cur_width;
             chmax(max_row_h, cur_height);
