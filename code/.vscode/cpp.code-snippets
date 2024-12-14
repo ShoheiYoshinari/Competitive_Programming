@@ -100,6 +100,7 @@
 			"    for (int i = 0; i < M; ++i) {",
 			"        int a, b;",
 			"        cin >> a >> b;",
+			"        a--, b--;",
 			"        G[a].push_back(b);",
 			"        G[b].push_back(a);",
 			"    }",
@@ -125,8 +126,6 @@
 			"vector<int> dist[v] はスタート頂点から頂点 v まで何ステップで到達できるかを表す",
 			"queue<int> que はその時点での橙色頂点 (発見済みだが未訪問な頂点) を格納するキュー"
 		]
-		
-
 	},
 
 	"deepth-first search":{
@@ -152,15 +151,14 @@
 		"prefix": "BS",
 		"body":[
 			"int binary_search(int x){",
-			"int L = 1, R = n;",
-			"while(L <= R){",
-			"int M = (L + R)/2;",
-			"if(x < a[M]) R = M-1;",
-			"if(x == a[M]) return M;",
-			"if(x > a[M]) L = M+1;",
+			"int ok = 1 //解が存在する値",
+			"int ng = n; //解が存在しない値",
+			"while(abs(ok - ng) > 1{",
+			"    int mid = (ok + ng)/2;",
+			"    if(solve(mid, x) ok = mid",
+			"    else ng = mid",
 			"}",
-			"return -1;",
-			"}"
+			"return ok"
 		],
 		"description": [
 			"二分探索"
