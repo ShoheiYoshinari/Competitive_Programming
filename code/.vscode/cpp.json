@@ -4,24 +4,30 @@
 		"prefix": "tmp",
 		"body": [
 			"#include <bits/stdc++.h>",
-			"using namespace std;",
-			"using ll = long long;",
-			"using ull = unsigned long long;",
-			"const double pi = acos(-1);",
-			"#define rep(i, n) for (int i = 0; i < (int)(n); i++)",
-			"#define rep2(i, s, n) for (int i = (s); i < (int)(n); i++)",
-			"#define all(p) (p).begin(), (p).end()",
-			"#define exists(c, e) ((c).find(e) != (c).end()",
-			"",
-			"struct INIT{",
-			" INIT(){",
-			"  std::ios::sync_with_stdio(false);",
-			"  std::cin.tie(0);",
-			"  cout << fixed << setprecision(20);",
-			" }",
-			"}INIT;",
-			"int main() {",
-			"}"
+"using namespace std;",
+"using ll = long long;",
+"using ull = unsigned long long;",
+"const double pi = acos(-1);",
+"#define OVERLOAD_REP(_1, _2, _3, name, ...) name",
+"#define REP1(i, n) for (auto i = std::decay_t<decltype(n)>{}; (i) != (n); ++(i))",
+"#define REP2(i, l, r) for (auto i = (l); (i) != (r); ++(i))",
+"#define rep(...) OVERLOAD_REP(__VA_ARGS__, REP2, REP1)(__VA_ARGS__)",
+"#define all(p) (p).begin(), (p).end()",
+"#define exists(c, e) ((c).find(e) != (c).end())",
+"template<class T> bool chmin(T& a,T b) { if(a > b){a = b; return true;} return false; }",
+"template<class T> bool chmax(T& a,T b) { if(a < b){a = b; return true;} return false; }",
+"template<class T>constexpr T INF() { return ::std::numeric_limits<T>::max(); }",
+"template<class T>constexpr T HINF() { return INF<T>() / 2; }",
+"const int dy[] = {1, 0, -1, 0};",
+"const int dx[] = {0, 1, 0, -1};",
+"",
+"struct INIT{",
+ "INIT(){",
+  "std::ios::sync_with_stdio(false);",
+  "std::cin.tie(0);",
+  "cout << fixed << setprecision(20);",
+ "}",
+"}INIT;"
 		],
 		"description": "atcoderのテンプレート"
 	},
@@ -29,9 +35,7 @@
 	"greatest common divisor": {
 		"prefix": "gcd",
 		"body": [
-			"int gcd(int a, int b) {",
-			"    return b ? gcd(b, a%b) : a;",
-			"}"
+			"int gcd(int a, int b) { return b ? gcd(b, a%b) : a;}"
 		],
 		"description": "最大公約数"
 	},
@@ -40,12 +44,12 @@
 	"least common multiple": {
 		"prefix": "lcm",
 		"body": [
-			"int lcm(int a, int b) {",
-			"return a / gcd(a, b) * b;",
-			"}"
+			"ll lcm(ll a, ll b) { return a / gcd(a, b) * b;}"
 		],
 		"description": "最小公倍数"
 	},
+
+
 
 	"primality test":{
 		"prefix": "isPrime",
@@ -92,43 +96,30 @@
 		"prefix": "BFS",
 		"body": [
 			"using Graph = vector<vector<int>>;",
-			
 			"int main() {",
-			"    // 頂点数と辺数",
 			"    int N, M; cin >> N >> M;",
-			
-			"    // グラフ入力受取 (ここでは無向グラフを想定)",
 			"    Graph G(N);",
 			"    for (int i = 0; i < M; ++i) {",
 			"        int a, b;",
 			"        cin >> a >> b;",
+			"        a--, b--;",
 			"        G[a].push_back(b);",
 			"        G[b].push_back(a);",
 			"    }",
-			
-			"    // BFS のためのデータ構造",
-			"    vector<int> dist(N, -1); // 全頂点を「未訪問」に初期化",
+			"    vector<int> dist(N, -1);",
 			"    queue<int> que;",
-			
-			"    // 初期条件 (頂点 0 を初期ノードとする)",
 			"    dist[0] = 0;",
-			"    que.push(0); // 0 を橙色頂点にする",
-		
-			"    // BFS 開始 (キューが空になるまで探索を行う)",
+			"    que.push(0);",
+			"",
 			"    while (!que.empty()) {",
-			"        int v = que.front(); // キューから先頭頂点を取り出す",
+			"        int v = que.front();",
 			"        que.pop();",
-			
-			"        // v から辿れる頂点をすべて調べる",
 			"        for (int nv : G[v]) {",
-			"            if (dist[nv] != -1) continue; // すでに発見済みの頂点は探索しない",
-			
-			"            // 新たな白色頂点 nv について距離情報を更新してキューに追加する",
+			"            if (dist[nv] != -1) continue;",
 			"            dist[nv] = dist[v] + 1;",
 			"            que.push(nv);",
 			"        }",
-			
-			"    // 結果出力 (各頂点の頂点 0 からの距離を見る)",
+			"    }",
 			"    for (int v = 0; v < N; ++v) cout << v << dist[v] << endl;",
 			"}"
 		],
@@ -137,8 +128,6 @@
 			"vector<int> dist[v] はスタート頂点から頂点 v まで何ステップで到達できるかを表す",
 			"queue<int> que はその時点での橙色頂点 (発見済みだが未訪問な頂点) を格納するキュー"
 		]
-		
-
 	},
 
 	"deepth-first search":{
@@ -147,11 +136,10 @@
 			"using Graph = vector<vector<int>>;",
 			"vector<bool> seen;",
 			"void dfs(const Graph &G, int v) {",
-			"    seen[v] = true; //v を訪問済みにする",
-			"    //v から行ける各頂点 next_v について",
+			"    seen[v] = true;",
 			"    for (auto next_v : G[v]) {", 
-			"        if (seen[next_v]) continue; // 移動先が訪問済みならスルー",
-			"        dfs(G, next_v); // 再帰的に探索",
+			"        if (seen[next_v]) continue;",
+			"        dfs(G, next_v);",
 			"    }",
 		"}"
 		],
@@ -165,15 +153,14 @@
 		"prefix": "BS",
 		"body":[
 			"int binary_search(int x){",
-			"int L = 1, R = n;",
-			"while(L <= R){",
-			"int M = (L + R)/2;",
-			"if(x < a[M]) R = M-1;",
-			"if(x == a[M]) return M;",
-			"if(x > a[M]) L = M+1;",
+			"int ok = 1 //解が存在する値",
+			"int ng = n; //解が存在しない値",
+			"while(abs(ok - ng) > 1){",
+			"    int mid = (ok + ng)/2;",
+			"    if(solve(mid, x) ok = mid;",
+			"    else ng = mid;",
 			"}",
-			"return -1;",
-			"}"
+			"return ok;"
 		],
 		"description": [
 			"二分探索"
@@ -205,9 +192,9 @@
 		"prefix": "basen number",
 		"body": [
 			"long long basen_to_long (string n, long long p){",
-			"    long long ans = 0, x = 1, m = n.size()",
-			"    for(int i = m-1; i >= 0; i--)",
-			"        ans = 1LL * (n[i]-'0') * x",
+			"    long long ans = 0, x = 1, m = n.size();",
+			"    for(int i = m-1; i >= 0; i--){",
+			"        ans += 1LL * (n[i]-'0') * x;",
 			"        x *= (ll)(p);",
 			"    }",
 			"    return ans;",
@@ -230,6 +217,49 @@
 			"}"
 		],
 		"description": "10進数をn進数に変換する関数"
-	}
+	},
 
+	"distance":{
+		"prefix": "distance",
+		"body": [
+			"long double distance(ll ax, ll ay, ll bx, ll by){",
+    		"    return sqrt((ax-bx)*(ax-bx)+(ay-by)*(ay-by));",
+			"}"
+		],
+		"description": "二次元座標の距離を求める関数"
+	},
+
+	"sieve":{
+		"prefix": "sieve",
+		"body": [
+			"const int L = 4000000;",
+			"vector<ll> primes;",
+			"void sieve() {",
+    		"    vector<bool> is_prime(L + 1, true);",
+    		"    is_prime[0] = is_prime[1] = false;",
+    		"    for (ll i = 2; i <= L; ++i) {",
+        	"        if (is_prime[i]) {",
+            "            primes.push_back(i);",
+            "            for (ll j = (ll)i * i; j <= L; j += i) {",
+            "               is_prime[j] = false;",
+            "            }",
+            "        }",
+            "    }",
+			"}"
+		],
+		"description": "エラトステネスの篩"
+	},
+
+	"my_compare":{
+		"prefix":"my_compare",
+		"body":[
+			"bool my_compare(pair<int, int> a, pair<int, int> b) {",
+			"    if(a.first != b.first){",
+			"         return a.first > b.first;",
+			"    }",
+			"    return a.second < b.second;",
+			"}"
+		],
+		"description":"sort(all(?), ココ)"
+	}
 }
