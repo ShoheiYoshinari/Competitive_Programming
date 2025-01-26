@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/yoshinarishouhei/Competitive_Programming/code/.vscode/practice",
-      "program": "/Users/yoshinarishouhei/Competitive_Programming/code/.vscode/practice/build/Debug/outDebug"
+      "cwd": "/home/nari/Competitive_Programming",
+      "program": "/home/nari/Competitive_Programming/build/Debug/outDebug"
     }
   ]
 }

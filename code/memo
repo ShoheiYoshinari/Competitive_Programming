@@ -40,3 +40,6 @@ iota(p, p + 5, 1);
 int min = *std::min_element(vec.begin(), vec.end());
 int max = *std::max_element(vec.begin(), vec.end());
 
+//prev_permutation はこの順序で 1つ前 の順列に並び替え
+
+

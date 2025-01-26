@@ -13,16 +13,15 @@ const double pi = acos(-1);
 #define exists(c, e) ((c).find(e) != (c).end())
 template<class T> bool chmin(T& a,T b) { if(a > b){a = b; return true;} return false; }
 template<class T> bool chmax(T& a,T b) { if(a < b){a = b; return true;} return false; }
+template<class T>constexpr T INF() { return ::std::numeric_limits<T>::max(); }
+template<class T>constexpr T HINF() { return INF<T>() / 2; }
 const int dy[] = {1, 0, -1, 0};
 const int dx[] = {0, 1, 0, -1};
 
 struct INIT{
- INIT(){
-  std::ios::sync_with_stdio(false);
-  std::cin.tie(0);
-  cout << fixed << setprecision(20);
- }
-}INIT;
-int main() {
-    cout << 2 << endl;
+INIT(){
+std::ios::sync_with_stdio(false);
+std::cin.tie(0);
+cout << fixed << setprecision(20);
 }
+}INIT;
