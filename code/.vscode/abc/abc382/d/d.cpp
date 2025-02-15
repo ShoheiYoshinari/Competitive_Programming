@@ -28,7 +28,7 @@ vector<vector<int>> ans;
 void generate(int s, vector<int>& now) {
     if (now.size() == n) {
         ans.push_back(now);
-        
+		return ;
     }
 
     for (int next = s + 10; next <= m; ++next) {

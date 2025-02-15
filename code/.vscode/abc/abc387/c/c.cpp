@@ -51,10 +51,12 @@ ll count(ll r){
 
     //k
     for(ll i = 1; i <= k; i++){
+        // ex) r = 54321のとき、最後の桁までいったら?がないので、res++して終了
         if(i == k){
             res++;
             break;
         }
+        // ex) r = 64???なら, 
         for(ll j = 0; j < min(digit[0], digit[i]); j++){
             res += sum_pow(digit[0], k-1-i);
         }
