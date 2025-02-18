@@ -25,3 +25,44 @@ std::cin.tie(0);
 cout << fixed << setprecision(20);
 }
 }INIT;
+
+using Graph = vector<vector<int>>;
+
+int main(){
+    int n;
+    cin >> n;
+    vector<string> s(n), t(n);
+    map<string, int> mp;
+    int cnt = 0;
+    rep(i, n){
+        cin >> s[i] >> t[i];
+        if(mp[s[i]] == 0) mp[s[i]] = cnt++;
+        if(mp[t[i]] == 0) mp[t[i]] = cnt++;
+    }
+    Graph G(cnt);
+    rep(i, n){
+        G[mp[s[i]]].push_back(mp[t[i]]);
+    }
+    vector<bool> seen(cnt, false);
+    rep(i, cnt){
+        if(seen[i] == true) continue;
+        queue<int> q;
+        q.push(i);
+        while(!q.empty()){
+            int v = q.front(); q.pop();
+            seen[v] = true;
+            for(auto nv : G[v]){
+                q.push(nv);
+            }
+        }
+    }
+
+    rep(i, cnt){
+        if(!seen[i]){
+            cout << "No" << endl;
+            return 0;
+        }
+    }
+    cout << "Yes" << endl;
+    return 0;
+}
