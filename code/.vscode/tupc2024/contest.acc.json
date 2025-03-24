@@ -1,0 +1,207 @@
+{
+  "contest": {
+    "id": "tupc2024",
+    "title": "Tohoku University Programming Contest 2024",
+    "url": "https://atcoder.jp/contests/tupc2024"
+  },
+  "tasks": [
+    {
+      "id": "tupc2024_a",
+      "label": "A",
+      "title": "Inversions of PQ and QP",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_b",
+      "label": "B",
+      "title": "Matching Query",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_b",
+      "directory": {
+        "path": "b",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_c",
+      "label": "C",
+      "title": "2-Power Rush",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_c",
+      "directory": {
+        "path": "c",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_d",
+      "label": "D",
+      "title": "Swap Counter",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_d",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_e",
+      "label": "E",
+      "title": "010-11 Shorten",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_e",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_f",
+      "label": "F",
+      "title": "Another Long Sequence Inversion",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_f",
+      "directory": {
+        "path": "f",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_g",
+      "label": "G",
+      "title": "Convex Hull of Intersections",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_g",
+      "directory": {
+        "path": "g",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_h",
+      "label": "H",
+      "title": "12 Grid",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_h",
+      "directory": {
+        "path": "h",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_i",
+      "label": "I",
+      "title": "Small Steps",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_i",
+      "directory": {
+        "path": "i",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_j",
+      "label": "J",
+      "title": "Median Operations",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_j",
+      "directory": {
+        "path": "j",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_k",
+      "label": "K",
+      "title": "Shuffle and Max Bracket Score",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_k",
+      "directory": {
+        "path": "k",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_l",
+      "label": "L",
+      "title": "Square Connection",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_l",
+      "directory": {
+        "path": "l",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_m",
+      "label": "M",
+      "title": "Divide Digit String",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_m",
+      "directory": {
+        "path": "m",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_n",
+      "label": "N",
+      "title": "Palindromic Path",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_n",
+      "directory": {
+        "path": "n",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_o",
+      "label": "O",
+      "title": "Twin Contests",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_o",
+      "directory": {
+        "path": "o",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_p",
+      "label": "P",
+      "title": "Adjacent Reset",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_p",
+      "directory": {
+        "path": "p",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_q",
+      "label": "Q",
+      "title": "Make Intervals Disjoint",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_q",
+      "directory": {
+        "path": "q",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "tupc2024_r",
+      "label": "R",
+      "title": "Bracket Game",
+      "url": "https://atcoder.jp/contests/tupc2024/tasks/tupc2024_r",
+      "directory": {
+        "path": "r",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    }
+  ]
+}
