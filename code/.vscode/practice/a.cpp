@@ -26,43 +26,30 @@ cout << fixed << setprecision(20);
 }
 }INIT;
 
-using Graph = vector<vector<int>>;
-
 int main(){
-    int n;
-    cin >> n;
-    vector<string> s(n), t(n);
-    map<string, int> mp;
-    int cnt = 0;
-    rep(i, n){
-        cin >> s[i] >> t[i];
-        if(mp[s[i]] == 0) mp[s[i]] = cnt++;
-        if(mp[t[i]] == 0) mp[t[i]] = cnt++;
-    }
-    Graph G(cnt);
-    rep(i, n){
-        G[mp[s[i]]].push_back(mp[t[i]]);
-    }
-    vector<bool> seen(cnt, false);
-    rep(i, cnt){
-        if(seen[i] == true) continue;
-        queue<int> q;
-        q.push(i);
-        while(!q.empty()){
-            int v = q.front(); q.pop();
-            seen[v] = true;
-            for(auto nv : G[v]){
-                q.push(nv);
-            }
-        }
-    }
+    int n, q;
+    cin >> n >> q;
+    vector<ll> a(n);
+    rep(i, n) cin >> a[i];
 
-    rep(i, cnt){
-        if(!seen[i]){
-            cout << "No" << endl;
-            return 0;
+    vector<ll> b(n+1), s(n+2);
+    b[0] = a[0] - 1;
+    rep(i, 1, n) b[i] =  b[i-1] + (a[i] - a[i-1] - 1);
+    b[n] = 1000000000000000000ll - a[n-1] - 1;
+
+    s[0] = 0;
+    rep(i, 1, n+2) s[i] = s[i-1] + b[i-1];
+
+    rep(i, 0, n+2) cout << s[i] << ' ';
+    cout << endl;
+    rep(i, q){
+        ll k;
+        cin >> k;
+        auto it = lower_bound(all(s), k) - s.begin();
+        if(it == 1){
+            cout << k << endl;
+        }else{
+            cout << a[it-1] + k-s[it] << endl;
         }
     }
-    cout << "Yes" << endl;
-    return 0;
 }
