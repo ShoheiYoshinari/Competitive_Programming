@@ -27,59 +27,76 @@ cout << fixed << setprecision(20);
 }INIT;
 
 using Graph = vector<vector<int>>;
-vector<bool> seen;
-void dfs(const Graph &G, int v) {
-    seen[v] = true;
-    for (auto next_v : G[v]) {
-        if (seen[next_v]) continue;
-        dfs(G, next_v);
-    }
-}
-
-
-using Graph = vector<vector<int>>;
 int main(){
     int h, w;
     cin >> h >> w;
-    vector<string> s(n);
-    rep(i, n) cin >> s[i];
+    vector<string> s(h);
+    rep(i, h) cin >> s[i];
 
-    vector<vector<int>> dist(h, vector<int>(w, 0));
+    vector<vector<int>> dist(h, vector<int>(w, INF<int>()));
     vector<pair<int, int>> p;
     rep(i, h){
         rep(j, w){
-            if(s[i][j] == "#") dist[i][j] = -1;
-            if(s[i][j] == "E"){
-                dist[i][j] = -2;
-                p.push_bacK({i, j});
+            if(s[i][j] == 'E'){
+                p.push_back({i, j});
             }
         }
     }
 
-    for(auto v : p){
+    queue<pair<int, int>> q;
+    for(auto [k, v] : p){
+        q.push({k, v});
+        dist[k][v] = 0;
+    }
 
-        queue<pair<int, int>> q;
-        q.push(v);
-        while(!q.empty()){
-            auto [i, j] = q.front(); q.pop();
+    while(!q.empty()){
+        auto [i, j] = q.front(); q.pop();
+        rep(dir, 4){
+            int ni = i + di[dir];
+            int nj = j + dj[dir];
+
+            if(ni < 0 || ni >= h || nj < 0 || nj >= w) continue;
+            if(s[ni][nj] == '#') continue;
+                
+            if(dist[ni][nj] > dist[i][j]+1){
+                dist[ni][nj] = dist[i][j] + 1;
+                q.push({ni, nj});
+            }
+        }
+    }
+
+    // rep(i, h){
+    //     rep(j, w){
+    //         if(dist[i][j] == INF<int>()) cout << "# ";
+    //         else cout << dist[i][j] << ' ';
+    //     }
+    //     cout << endl;
+    // }
+
+    rep(i, h){
+        rep(j, w){
+            if(s[i][j] == 'E' || s[i][j] == '#') continue;
             rep(dir, 4){
                 int ni = i + di[dir];
-                int nj = j = dj[dir];
-
-                if(ni < 0 || ni >= h || nj < 0 || nj > w) continue;
-                if(dist[ni][nj] == -2 || dist[ni][nj] == -1) continue;
-                if(dist[ni][nj] != 0) continue;
+                int nj = j + dj[dir];
+                if(ni < 0 || ni >= h || nj < 0 || nj >= w) continue;
                 
-                if(dist[ni][nj] > dist[i][j]+1){
-                    dist[ni][nj] = dist[i][j] + 1;
-                    q.push({ni, nj});
+                if(dist[ni][nj] == dist[i][j] - 1 || s[ni][nj] == 'E'){
+                    if(dir == 0) s[i][j] = 'v';
+                    if(dir == 1) s[i][j] = '>';
+                    if(dir == 2) s[i][j] = '^';
+                    if(dir == 3) s[i][j] = '<';
                 }
             }
         }
     }
 
-    
-
-
+    rep(i, h){
+        rep(j, w){
+            cout << s[i][j];
+        }
+        cout << endl;
+    }
+    return 0;
 
 }
