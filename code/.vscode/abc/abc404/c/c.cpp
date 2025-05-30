@@ -26,6 +26,37 @@ cout << fixed << setprecision(20);
 }
 }INIT;
 
+using Graph = vector<vector<int>>;
+vector<bool> seen;
+void dfs(const Graph &G, int v) {
+    seen[v] = true;
+    if(G[v].size() != 2) return ;
+    for (auto next_v : G[v]) {
+        if (seen[next_v]) continue;
+        dfs(G, next_v);
+    }
+}
+
 int main(){
-    
+    int n, m;
+    cin >> n >> m;
+    Graph G(n);
+    rep(i, m){
+        int a, b;
+        cin >> a >> b;
+        a--, b--;
+        G[a].push_back(b);
+        G[b].push_back(a);
+    }
+
+    seen.resize(n);
+    dfs(G, 0);
+    rep(i, n){
+        if(seen[i] == false){
+            cout << "No" << endl;
+            return 0;
+        }
+    }
+    cout << "Yes" << endl;
+    return 0;
 }
