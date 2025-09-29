@@ -1,0 +1,31 @@
+{
+  "contest": {
+    "id": "ahc054",
+    "title": "ALGO ARTIS Programming Contest 2025 Summer（AtCoder Heuristic Contest 054）",
+    "url": "https://atcoder.jp/contests/ahc054"
+  },
+  "tasks": [
+    {
+      "id": "ahc054_a",
+      "label": "A",
+      "title": "Treant's Forest",
+      "url": "https://atcoder.jp/contests/ahc054/tasks/ahc054_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "a.cpp"
+      }
+    },
+    {
+      "id": "ahc054_b",
+      "label": "A-Final",
+      "title": "Treant's Forest (System Test)",
+      "url": "https://atcoder.jp/contests/ahc054/tasks/ahc054_b",
+      "directory": {
+        "path": "a-final",
+        "testdir": "test",
+        "submit": "a-final.cpp"
+      }
+    }
+  ]
+}
